@@ -1,0 +1,369 @@
+<title>PUBPOL 205 PS5 Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: single reading column, problem headers in a sans label row, figures and tables set off with a thin ruled frame */
+:root{
+  --bg:#f7f8fa; --paper:#ffffff; --fg:#1d2430; --muted:#5b6575; --rule:#d5dae2;
+  --accent:#1f5f8b; --accent2:#b5532a; --soft:#e8eef4;
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#12161c; --paper:#1a2029; --fg:#e3e7ee; --muted:#9aa4b3; --rule:#323b48;
+  --accent:#7db7e0; --accent2:#e8956c; --soft:#222b37; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#12161c; --paper:#1a2029; --fg:#e3e7ee; --muted:#9aa4b3; --rule:#323b48;
+  --accent:#7db7e0; --accent2:#e8956c; --soft:#222b37; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font:17px/1.6 var(--serif);padding:0 16px}
+main{max-width:760px;margin:0 auto;padding-block:40px 80px}
+header.top{border-bottom:2px solid var(--fg);padding-bottom:16px;margin-bottom:28px}
+.course{font:600 13px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{font-size:2.1rem;line-height:1.15;margin:.2em 0 .1em;text-wrap:balance}
+.sub{color:var(--muted);font-family:var(--sans);font-size:14px}
+nav.toc{display:flex;flex-wrap:wrap;gap:6px 14px;font:14px var(--sans);margin:18px 0 0}
+nav.toc a{color:var(--accent);text-decoration:none}
+nav.toc a:hover,nav.toc a:focus-visible{text-decoration:underline}
+h2.chap{font:600 13px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--accent2);margin:48px 0 0}
+section.prob{background:var(--paper);border:1px solid var(--rule);border-radius:4px;padding:22px 24px;margin-top:18px}
+section.prob h3{font:600 18px var(--sans);margin:0 0 4px;display:flex;flex-wrap:wrap;gap:8px;align-items:baseline}
+section.prob h3 .tag{font:500 13px var(--mono);color:var(--muted)}
+section.prob h3 .opt{font:600 11px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--accent2);border:1px solid var(--accent2);border-radius:3px;padding:1px 6px}
+.given{color:var(--muted);font-size:15px;margin:0 0 12px}
+ol.parts{list-style:none;padding:0;margin:0;display:grid;gap:14px}
+ol.parts>li{display:grid;grid-template-columns:2em 1fr;gap:0 4px}
+ol.parts>li>b{font:600 15px var(--sans);color:var(--accent);padding-top:2px}
+ol.parts>li>div{min-width:0}
+ol.parts p{margin:0 0 6px}
+.eq{font-family:var(--mono);font-size:15px;background:var(--soft);padding:8px 12px;border-radius:3px;margin:6px 0;overflow-x:auto;white-space:pre;line-height:1.55}
+.ans{font-weight:600}
+.note{font:14px/1.5 var(--sans);color:var(--muted);border-left:3px solid var(--accent2);padding:4px 10px;margin:8px 0}
+figure{margin:10px 0;overflow-x:auto}
+figure svg{display:block;max-width:100%;height:auto;font-family:var(--sans)}
+figcaption{font:13px var(--sans);color:var(--muted)}
+.tbl{overflow-x:auto;margin:8px 0}
+table{border-collapse:collapse;font:14px var(--mono);font-variant-numeric:tabular-nums}
+th,td{border:1px solid var(--rule);padding:5px 10px;text-align:right}
+th{font-family:var(--sans);background:var(--soft)}
+td.given-cell{color:var(--muted)}
+svg .ax{stroke:var(--fg);stroke-width:1.3;fill:none}
+svg .grid{stroke:var(--rule);stroke-dasharray:3 3;fill:none}
+svg .l1{stroke:var(--fg);stroke-width:2;fill:none}
+svg .l2{stroke:var(--accent);stroke-width:2;fill:none}
+svg .l3{stroke:var(--accent2);stroke-width:2;fill:none}
+svg .l4{stroke:var(--muted);stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+svg .area{fill:var(--accent2);fill-opacity:.35;stroke:none}
+svg .dot{fill:var(--fg)}
+svg text{fill:var(--fg);font-size:12px}
+svg text.lab{font-weight:600}
+svg text.mut{fill:var(--muted);font-size:11px}
+footer{margin-top:40px;font:13px var(--sans);color:var(--muted)}
+@media (max-width:480px){section.prob{padding:16px 14px}h1{font-size:1.7rem}}
+</style>
+
+<main>
+<header class="top">
+  <div class="course">PUBPOL 205 · Fall 2026</div>
+  <h1>Problem Set 5 Solutions</h1>
+  <div class="sub">Chapter 17 (externalities) and Chapters 6–7 (production and costs). Due in class Oct 13, 2026.</div>
+  <nav class="toc" aria-label="Problems">
+    <a href="#p1">1 · 17.8</a><a href="#p2">2 · 17.9</a><a href="#p3">3 · 17.11</a><a href="#p4">4 · 17.13</a>
+    <a href="#p5">5 · 6.6</a><a href="#p6">6 · 6.9</a><a href="#p7">7 · 6.13</a><a href="#p8">8 · 6.17</a>
+    <a href="#p9">9 · 6.23</a><a href="#p10">10 · 7.14</a>
+  </nav>
+</header>
+
+<h2 class="chap">Chapter 17 · Externalities</h2>
+
+<section class="prob" id="p1">
+  <h3>Problem 1 <span class="tag">17.8</span> Drive-in movies</h3>
+  <p class="given">Private demand P = 20 − 0.1Q; marginal cost MC = 0.1Q; external marginal benefit EMB = 2 − 0.01Q.</p>
+  <ol class="parts">
+    <li><b>a.</b><div>
+      <p>Set private demand equal to marginal cost:</p>
+      <div class="eq">20 − 0.1Q = 0.1Q  ⇒  Q = 100
+P = 20 − 0.1(100) = $10</div>
+      <p class="ans">The market shows 100 movies at $10.</p>
+      <figure id="fig1a"></figure>
+    </div></li>
+    <li><b>b.</b><div>
+      <p>The social demand curve adds the external marginal benefit vertically to private demand:</p>
+      <div class="eq">SD = D + EMB = (20 − 0.1Q) + (2 − 0.01Q) = 22 − 0.11Q</div>
+      <p>EMB runs from $2 at Q = 0 to $0 at Q = 200. SD runs from $22 at Q = 0 to $0 at Q = 200.</p>
+      <figure id="fig1b"></figure>
+    </div></li>
+    <li><b>c.</b><div>
+      <p>The Movie Czar sets social demand equal to marginal cost:</p>
+      <div class="eq">22 − 0.11Q = 0.1Q  ⇒  Q = 22/0.21 ≈ 105
+P = 22 − 0.11(105) ≈ $10.45</div>
+      <p class="ans">Optimal quantity ≈ 105 movies at a price of about $10.45.</p>
+    </div></li>
+    <li><b>d.</b><div>
+      <p>The deadweight loss is the triangle between SD and MC from the private output (100) to the efficient output (≈105), shaded in the graph in (b). The answer key computes:</p>
+      <div class="eq">DWL = ½ × (105 − 100) × (10.45 − 9.50) = $2.375</div>
+      <div class="note">Using the hint directly: at Q = 100 the last unit's external benefit is EMB = 2 − 0.01(100) = $1, so the triangle's height is SD − MC = 11 − 10 = $1 and its base is 104.76 − 100 = 4.76. DWL = ½ × 4.76 × 1 ≈ $2.38. Same answer to rounding.</div>
+    </div></li>
+    <li><b>e.</b><div>
+      <p>Yes. Privately run theaters underproduce because they ignore the benefit to viewers outside the fence. Government can raise output to the socially optimal level. It could also reach the same result with a price-based policy, such as a per-movie subsidy to private producers equal to the EMB at the optimum.</p>
+    </div></li>
+  </ol>
+</section>
+
+<section class="prob" id="p2">
+  <h3>Problem 2 <span class="tag">17.9</span> Leather</h3>
+  <p class="given">Inverse demand P = 50 − 0.5Q; private MC = 0.45Q; external marginal cost EMC = 0.05Q.</p>
+  <ol class="parts">
+    <li><b>a.</b><div>
+      <p>Social marginal cost is SMC = MC + EMC = 0.45Q + 0.05Q = 0.5Q. The efficient output sets MB = SMC:</p>
+      <div class="eq">50 − 0.5Q = 0.5Q  ⇒  Q* = 50
+P = 50 − 0.5(50) = $25</div>
+      <p class="ans">Set the quota at 50 units. The market price with the quota is $25.</p>
+    </div></li>
+    <li><b>b.</b><div>
+      <p>The tax equals the external damage at the efficient output: EMC(50) = 0.05 × 50 = <span class="ans">$2.50 per unit</span>. With the tax, producers' marginal cost becomes MC = 0.45Q + 2.50. Producers set MB = MC:</p>
+      <div class="eq">50 − 0.5Q = 0.45Q + 2.50  ⇒  Q = 50
+P = 50 − 0.5(50) = $25</div>
+      <p class="ans">50 units are bought and sold. Buyers pay $25; sellers keep $25 − $2.50 = $22.50.</p>
+      <div class="note">For comparison, the unregulated market sets 50 − 0.5Q = 0.45Q, giving Q ≈ 52.6, so the policy trims output by about 2.6 units.</div>
+    </div></li>
+  </ol>
+</section>
+
+<section class="prob" id="p3">
+  <h3>Problem 3 <span class="tag">17.11</span> Genetic testing</h3>
+  <ol class="parts">
+    <li><b>a.</b><div>
+      <p>A positive externality. The person who buys the test gets private benefits: ancestry, links to relatives. Law enforcement also gets potential links to suspects, and the more people who are tested, the more matches there are. That benefit goes to law enforcement (and society), not to the buyer.</p>
+    </div></li>
+    <li><b>b.</b><div>
+      <p>Markets underprovide goods that carry positive externalities. Buyers act on their private marginal benefit, which lies below the social marginal benefit, so the market quantity falls short of the efficient quantity. There is likely too little genetic testing.</p>
+    </div></li>
+    <li><b>c.</b><div>
+      <p>The goal is more testing, which rules out taxes and cap-and-trade; both reduce quantity. A quota (requiring testing) would raise output but raises serious constitutional and privacy concerns. That leaves a <span class="ans">subsidy</span>, which raises the incentive to be tested without compelling anyone.</p>
+    </div></li>
+  </ol>
+</section>
+
+<section class="prob" id="p4">
+  <h3>Problem 4 <span class="tag">17.13</span> Sulfur dioxide</h3>
+  <p class="given">From the diagram: MBP = MAC falls from $800 to $0; MCP (external marginal cost of pollution) rises; they cross at $400.</p>
+  <ol class="parts">
+    <li><b>a.</b><div>
+      <p>When pollution is already low, cutting one more ton is expensive: the cheap abatement options are used up. When pollution is high, the first tons can be cut cheaply. So the marginal abatement cost, read as the marginal benefit to the firm of emitting one more ton, falls as emissions rise.</p>
+    </div></li>
+    <li><b>b.</b><div>
+      <p>The efficient level of pollution is where MBP = MAC crosses MCP, at a marginal value of $400 per ton.</p>
+      <figure id="fig4"></figure>
+    </div></li>
+    <li><b>c.</b><div>
+      <p>Firms ignore MCP, so they would emit until MBP = 0. A $400 per-ton tax shifts their net marginal benefit of polluting down by $400 (the dashed line in the figure). Firms now emit until MBP = $400, which happens exactly at the efficient level, because the MCP there is $400.</p>
+    </div></li>
+    <li><b>d.</b><div>
+      <p><span class="ans">$600 is too high:</span> firms emit until MBP = $600, which happens at a quantity below the efficient level (Q₁). Society gives up abatement-cost savings worth more than the damage avoided.</p>
+      <p><span class="ans">$200 is too low:</span> firms emit until MBP = $200, a quantity above the efficient level (Q₂). Those extra tons cause damage greater than their value to firms.</p>
+    </div></li>
+  </ol>
+</section>
+
+<h2 class="chap">Chapter 6 · Production</h2>
+
+<section class="prob" id="p5">
+  <h3>Problem 5 <span class="tag">6.6</span> Hawg Wild</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>K \ L</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr></thead>
+    <tbody>
+      <tr><th>1</th><td>100</td><td>132</td><td>155</td><td>174</td><td>190</td><td>205</td></tr>
+      <tr><th>2</th><td>152</td><td>200</td><td>235</td><td>264</td><td>289</td><td>310</td></tr>
+      <tr><th>3</th><td>193</td><td>255</td><td>300</td><td>337</td><td>368</td><td>396</td></tr>
+      <tr><th>4</th><td>230</td><td>303</td><td>357</td><td>400</td><td>437</td><td>470</td></tr>
+      <tr><th>5</th><td>263</td><td>347</td><td>408</td><td>457</td><td>500</td><td>538</td></tr>
+      <tr><th>6</th><td>293</td><td>387</td><td>455</td><td>510</td><td>558</td><td>600</td></tr>
+    </tbody>
+  </table></div>
+  <ol class="parts">
+    <li><b>a.</b><div><p>Long-run. Both labor and capital vary in the table. In a short-run production function capital is held fixed.</p></div></li>
+    <li><b>b.</b><div><p class="ans">347 diners (K = 5, L = 2).</p></div></li>
+    <li><b>c.</b><div><div class="eq">MP of nephew = Q(K=5, L=3) − Q(K=5, L=2) = 408 − 347 = 61</div></div></li>
+    <li><b>d.</b><div><p>No. Diminishing marginal product of labor is defined holding capital fixed. Along any row, the MP of labor falls as L rises. Comparing MP across rows changes capital, and more capital makes each worker more productive; that is not a violation.</p></div></li>
+    <li><b>e.</b><div><div class="eq">MP of smoker = Q(K=6, L=2) − Q(K=5, L=2) = 387 − 347 = 40</div></div></li>
+    <li><b>f.</b><div>
+      <p>Compare marginal product per dollar:</p>
+      <div class="eq">MPL / w = 61 / 12 = 5.083
+MPK / r = 40 / 8  = 5.000</div>
+      <p class="ans">Hire the worker: labor yields slightly more output per dollar at the margin.</p>
+    </div></li>
+  </ol>
+</section>
+
+<section class="prob" id="p6">
+  <h3>Problem 6 <span class="tag">6.9</span> Fetzer valves</h3>
+  <ol class="parts">
+    <li><b></b><div>
+      <p>At the point where the isoquants cross, both countries use the same labor–capital combination. Now remove a fixed amount of capital. Along the steeper isoquant (Country A), output is maintained with a smaller increase in labor than along the flatter one (Country B). Labor substitutes for capital more effectively in A, so A's MRTS = MPL/MPK is higher, consistent with more productive, more skilled labor.</p>
+      <p class="ans">Country A is the United States; Country B is China.</p>
+    </div></li>
+  </ol>
+</section>
+
+<section class="prob" id="p7">
+  <h3>Problem 7 <span class="tag">6.13</span> Isocost lines</h3>
+  <p class="given">Wage w = $12 per hour; rental rate r = $7 per hour.</p>
+  <ol class="parts">
+    <li><b>a.</b><div><div class="eq">TC = 12L + 7K</div></div></li>
+    <li><b>b.</b><div><div class="eq">100 = 12L + 7K  ⇒  K = 100/7 − (12/7)L</div></div></li>
+    <li><b>c.</b><div><figure id="fig7"></figure></div></li>
+    <li><b>d.</b><div><p>Vertical intercept K = 100/7 ≈ 14.3: the capital $100 rents if no labor is hired. Horizontal intercept L = 100/12 ≈ 8.3: the labor $100 hires if no capital is rented.</p></div></li>
+    <li><b>e.</b><div><p>Slope = −w/r = −12/7 ≈ −1.71. It is the market rate at which capital trades for labor: one more worker costs the same as 12/7 units of capital.</p></div></li>
+    <li><b>f.</b><div>
+      <div class="eq">100 = 14L + 7K  ⇒  K = 100/7 − 2L</div>
+      <p>The isocost line rotates inward around the vertical intercept (100/7 is unchanged) and becomes steeper, with slope −2. The horizontal intercept falls to 100/14 ≈ 7.1. Line C₂ in the graph above.</p>
+    </div></li>
+  </ol>
+</section>
+
+<section class="prob" id="p8">
+  <h3>Problem 8 <span class="tag">6.17</span> Creekwood Lawn and Landscape</h3>
+  <p class="given">Cost-minimizing at L = 20, K = 10, Q = 10 lawns, C = $400. The $400 isocost hits L = 40 and K = 20.</p>
+  <ol class="parts">
+    <li><b>a.</b><div>
+      <p>$400 buys at most 40 workers (horizontal intercept), so w = 400/40 = <span class="ans">$10/hour</span>. It buys at most 20 units of capital (vertical intercept), so r = 400/20 = <span class="ans">$20/hour</span>.</p>
+    </div></li>
+    <li><b>b.</b><div>
+      <p>At w = $20, $400 buys at most 20 workers. The $400 isocost rotates inward around K = 20 to the L-intercept at 20. It no longer reaches the Q = 10 isoquant, so serving 10 lawns for $400 is impossible. <span class="ans">Creekwood's cost of serving its customers rises.</span></p>
+      <figure id="fig8b"></figure>
+    </div></li>
+    <li><b>c.</b><div>
+      <p>The original bundle now costs 20 × $20 + 10 × $20 = $600. The $200 subsidy covers the difference, so Creekwood pays $400 out of pocket for exactly its old inputs. The new isocost (total spending $600) passes through (L = 20, K = 10) with the steeper slope −w/r = −1, so it hits K = 30 and L = 30.</p>
+      <figure id="fig8c"></figure>
+    </div></li>
+    <li><b>d.</b><div>
+      <p>No. Labor is now relatively more expensive, and the subsidy arrives whether or not Creekwood spends it on labor. The steeper isocost through (20, 10) cuts the isoquant rather than being tangent to it, so Creekwood can lower costs by substituting toward capital: it moves to the point L* &lt; 20, K* &gt; 10 where an isocost with slope −1 is tangent to Q = 10.</p>
+    </div></li>
+  </ol>
+</section>
+
+<section class="prob" id="p9">
+  <h3>Problem 9 <span class="tag">6.23</span> Cam's Cannolis</h3>
+  <p class="given">w = r = $10, so every isocost line has slope −w/r = −1.</p>
+  <ol class="parts">
+    <li><b>a.</b><div>
+      <p>The isocost lines tangent to each isoquant give the cost-minimizing bundles:</p>
+      <p>Q = 50: L = 15, K = 15 · Q = 80: L = 25, K = 25 · Q = 100: L = 40, K = 40.</p>
+    </div></li>
+    <li><b>b.</b><div>
+      <p>The expansion path connects these tangency points: (15, 15), (25, 25), (40, 40). Here it is the 45° ray from the origin.</p>
+      <figure id="fig9a"></figure>
+    </div></li>
+    <li><b>c.</b><div>
+      <div class="tbl"><table>
+        <thead><tr><th>Output</th><th>K</th><th>L</th><th>r</th><th>w</th><th>TC = rK + wL</th></tr></thead>
+        <tbody>
+          <tr><td>50</td><td>15</td><td>15</td><td>10</td><td>10</td><td>300</td></tr>
+          <tr><td>80</td><td>25</td><td>25</td><td>10</td><td>10</td><td>500</td></tr>
+          <tr><td>100</td><td>40</td><td>40</td><td>10</td><td>10</td><td>800</td></tr>
+        </tbody>
+      </table></div>
+    </div></li>
+    <li><b>d.</b><div>
+      <figure id="fig9b"></figure>
+      <p>Total cost rises faster than output (from 80 to 100 units, 20 more units cost $300), so the curve is convex over this range.</p>
+    </div></li>
+  </ol>
+</section>
+
+<h2 class="chap">Chapter 7 · Costs</h2>
+
+<section class="prob" id="p10">
+  <h3>Problem 10 <span class="tag">7.14</span> Funnel cake costs <span class="opt">Optional</span></h3>
+  <p class="given">Identities used: TC = FC + VC; MC = ΔTC; AVC = VC/Q; AFC = FC/Q; ATC = TC/Q. Gray cells were legible in the original.</p>
+  <ol class="parts">
+    <li><b></b><div>
+      <p>Steps: AFC(5) = 11 gives FC = 55 at every Q. VC(1) = 17 and MC(2) = 15 give VC(2) = 32. TC(3) = 101 gives VC(3) = 46. AVC(4) = 14.5 gives VC(4) = 58. TC(5) = 122 matches VC(5) = 67. ATC(6) = 21 gives TC(6) = 126.</p>
+      <div class="tbl"><table>
+        <thead><tr><th>Q</th><th>TC</th><th>FC</th><th>VC</th><th>MC</th><th>AVC</th><th>AFC</th><th>ATC</th></tr></thead>
+        <tbody>
+          <tr><td>0</td><td>55</td><td>55</td><td>0</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><td>1</td><td>72</td><td>55</td><td class="given-cell">17</td><td>17</td><td>17</td><td>55</td><td>72</td></tr>
+          <tr><td>2</td><td>87</td><td>55</td><td>32</td><td class="given-cell">15</td><td>16</td><td>27.5</td><td>43.5</td></tr>
+          <tr><td>3</td><td class="given-cell">101</td><td>55</td><td>46</td><td>14</td><td>15.33</td><td>18.33</td><td>33.67</td></tr>
+          <tr><td>4</td><td>113</td><td>55</td><td>58</td><td>12</td><td class="given-cell">14.5</td><td>13.75</td><td>28.25</td></tr>
+          <tr><td>5</td><td class="given-cell">122</td><td>55</td><td class="given-cell">67</td><td>9</td><td>13.4</td><td class="given-cell">11</td><td>24.4</td></tr>
+          <tr><td>6</td><td>126</td><td>55</td><td>71</td><td>4</td><td>11.83</td><td>9.17</td><td class="given-cell">21</td></tr>
+        </tbody>
+      </table></div>
+    </div></li>
+  </ol>
+</section>
+
+<footer>Solutions follow the course answer key. Graphs redrawn to scale from the given equations.</footer>
+</main>
+
+<script>
+(function(){
+  const NS="http://www.w3.org/2000/svg";
+  function plot(id,o){
+    const W=420,H=300,m={l:52,r:84,t:16,b:44},pw=W-m.l-m.r,ph=H-m.t-m.b;
+    const X=x=>m.l+x/o.xmax*pw, Y=y=>m.t+ph-y/o.ymax*ph;
+    let s=`<svg viewBox="0 0 ${W} ${H}" width="${W}" role="img" aria-label="${o.aria||''}">`;
+    (o.areas||[]).forEach(a=>{s+=`<polygon class="area" points="${a.map(p=>X(p[0])+','+Y(p[1])).join(' ')}"/>`});
+    (o.guides||[]).forEach(g=>{s+=`<polyline class="grid" points="${X(0)},${Y(g[1])} ${X(g[0])},${Y(g[1])} ${X(g[0])},${Y(0)}"/>`});
+    s+=`<polyline class="ax" points="${X(0)},${Y(o.ymax)} ${X(0)},${Y(0)} ${X(o.xmax)},${Y(0)}"/>`;
+    (o.xt||[]).forEach(t=>{const v=Array.isArray(t)?t:[t,t];s+=`<text class="mut" x="${X(v[0])}" y="${Y(0)+16}" text-anchor="middle">${v[1]}</text>`});
+    (o.yt||[]).forEach(t=>{const v=Array.isArray(t)?t:[t,t];s+=`<text class="mut" x="${X(0)-6}" y="${Y(v[0])+4}" text-anchor="end">${v[1]}</text>`});
+    s+=`<text x="${X(o.xmax)}" y="${H-6}" text-anchor="end">${o.xl}</text>`;
+    s+=`<text x="${X(0)-6}" y="${m.t-4}" text-anchor="start">${o.yl}</text>`;
+    (o.lines||[]).forEach(l=>{
+      const pts=l.f?range(l.from,l.to).map(x=>[x,l.f(x)]).filter(p=>p[1]<=o.ymax*1.02&&p[1]>=0):l.pts;
+      s+=`<polyline class="${l.c||'l1'}" points="${pts.map(p=>X(p[0]).toFixed(1)+','+Y(p[1]).toFixed(1)).join(' ')}"/>`;
+      if(l.lab){const p=l.at||pts[pts.length-1];s+=`<text class="lab" x="${X(p[0])+5}" y="${Y(p[1])+4}">${l.lab}</text>`}
+    });
+    (o.dots||[]).forEach(d=>{s+=`<circle class="dot" cx="${X(d[0])}" cy="${Y(d[1])}" r="3.5"/>`;if(d[2])s+=`<text x="${X(d[0])+6}" y="${Y(d[1])-6}">${d[2]}</text>`});
+    s+="</svg>";
+    document.getElementById(id).insertAdjacentHTML("afterbegin",s);
+    if(o.cap)document.getElementById(id).insertAdjacentHTML("beforeend",`<figcaption>${o.cap}</figcaption>`);
+  }
+  function range(a,b){const r=[];for(let i=0;i<=80;i++)r.push(a+(b-a)*i/80);return r}
+
+  plot("fig1a",{xmax:230,ymax:24,xl:"Movies (Q)",yl:"Price ($)",xt:[100,200],yt:[10,20],guides:[[100,10]],
+    lines:[{pts:[[0,20],[200,0]],lab:"D",at:[200,0]},{pts:[[0,0],[200,20]],lab:"MC",c:"l2"}],dots:[[100,10]],
+    cap:"Private equilibrium: Q = 100, P = $10."});
+  const qs=22/0.21;
+  plot("fig1b",{xmax:230,ymax:24,xl:"Movies (Q)",yl:"Price ($)",xt:[[100,"100"],[200,"200"]],yt:[2,10,20,22],
+    areas:[[[100,10],[100,11],[qs,0.1*qs]]],
+    lines:[{pts:[[0,20],[200,0]],lab:"D",at:[200,0]},{pts:[[0,22],[200,0]],lab:"SD",c:"l3",at:[15,20.4]},
+      {pts:[[0,2],[200,0]],lab:"EMB",c:"l4",at:[120,0.8]},{pts:[[0,0],[200,20]],lab:"MC",c:"l2"}],
+    dots:[[qs,0.1*qs,"≈105"]],cap:"Social demand SD = D + EMB. Shaded triangle: deadweight loss from Q = 100 to Q ≈ 105."});
+
+  plot("fig4",{xmax:100,ymax:900,xl:"Tons SO₂",yl:"$/ton",xt:[[50,"Q*"],[25,"Q₁"],[75,"Q₂"]],yt:[200,400,600,800],guides:[[50,400]],
+    lines:[{pts:[[0,800],[100,0]],lab:"MBP = MAC",at:[88,96]},{pts:[[8,64],[100,800]],c:"l2",lab:"MCP"},
+      {pts:[[0,400],[50,0]],c:"l4",lab:"MBP − $400 tax",at:[30,190]}],
+    dots:[[50,400]],cap:"Efficient pollution where MBP = MCP = $400. With a $400 tax, firms emit until MBP − 400 = 0, i.e. at Q*. Q₁ and Q₂ mark outcomes under $600 and $200 taxes."});
+
+  plot("fig7",{xmax:10,ymax:16,xl:"Labor (L)",yl:"Capital (K)",xt:[[100/14,"7.1"],[100/12,"8.3"]],yt:[[100/7,"14.3"]],
+    lines:[{pts:[[0,100/7],[100/12,0]],c:"l2",lab:"C₁ (w = 12)"},{pts:[[0,100/7],[100/14,0]],c:"l3",lab:"C₂ (w = 14)",at:[3.9,6.4]}],
+    cap:"C₁: slope −12/7. C₂ after the wage rises to $14: slope −2."});
+
+  const iso=L=>200/L/ (1) ; // stylized Q = 10 isoquant through (20,10): K = 200/L
+  plot("fig8b",{xmax:45,ymax:32,xl:"Labor (L)",yl:"Capital (K)",xt:[20,40],yt:[10,20],guides:[[20,10]],
+    lines:[{f:iso,from:6.5,to:42,lab:"Q = 10"},{pts:[[0,20],[40,0]],c:"l2",lab:"$400, w = 10",at:[33,4]},
+      {pts:[[0,20],[20,0]],c:"l3",lab:"$400, w = 20",at:[12,1]}],dots:[[20,10]],
+    cap:"After the wage doubles, the $400 isocost no longer reaches Q = 10."});
+  const Ls=Math.sqrt(200), Ks=200/Ls;
+  plot("fig8c",{xmax:45,ymax:32,xl:"Labor (L)",yl:"Capital (K)",xt:[[Ls,"L*"],20,30,40],yt:[10,[Ks,"K*"],20,30],guides:[[20,10],[Ls,Ks]],
+    lines:[{f:iso,from:6.5,to:42,lab:"Q = 10"},{pts:[[0,20],[40,0]],c:"l4",lab:"$400 original",at:[30,2.5]},
+      {pts:[[0,30],[30,0]],c:"l3",lab:"$600 (wage + subsidy)",at:[27,6]},{pts:[[0,2*Ks],[2*Ls,0]],c:"l2",lab:"tangent, slope −1",at:[2*Ls-2,3]}],
+    dots:[[20,10],[Ls,Ks]],cap:"Part (c): the $600 isocost passes through (20, 10). Part (d): cost is lower at the tangency (L*, K*), with less labor and more capital. Isoquant shape is illustrative."});
+
+  const isoQ=(c)=>(L=>c*c/L);
+  plot("fig9a",{xmax:60,ymax:55,xl:"Labor (L)",yl:"Capital (K)",xt:[15,25,40],yt:[15,25,40],guides:[[15,15],[25,25],[40,40]],
+    lines:[{f:isoQ(15),from:5,to:52,lab:"Q = 50"},{f:isoQ(25),from:12,to:55,lab:"Q = 80"},{f:isoQ(40),from:30,to:58,lab:"Q = 100"},
+      {pts:[[0,30],[30,0]],c:"l2",lab:"C₁",at:[30,0]},{pts:[[0,50],[50,0]],c:"l2",lab:"C₂",at:[50,0]},{pts:[[25,55],[55,25]],c:"l2",lab:"C₃"},
+      {pts:[[0,0],[52,52]],c:"l4",lab:"Expansion path"}],dots:[[15,15],[25,25],[40,40]],
+    cap:"Isocosts with slope −1 tangent to each isoquant. Isoquant shapes are illustrative."});
+
+  plot("fig9b",{xmax:120,ymax:950,xl:"Output (Q)",yl:"Total cost ($)",xt:[50,80,100],yt:[300,500,800],guides:[[50,300],[80,500],[100,800]],
+    lines:[{pts:[[50,300],[65,390],[80,500],[90,630],[100,800],[106,920]],c:"l2",lab:"TC",at:[106,920]}],
+    dots:[[50,300],[80,500],[100,800]],cap:"Total cost at the three cost-minimizing points."});
+})();
+</script>
