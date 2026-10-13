@@ -316,7 +316,7 @@ MPK / r = 40 / 8  = 5.000</div>
     (o.lines||[]).forEach(l=>{
       const pts=l.f?range(l.from,l.to).map(x=>[x,l.f(x)]).filter(p=>p[1]<=o.ymax*1.02&&p[1]>=0):l.pts;
       s+=`<polyline class="${l.c||'l1'}" points="${pts.map(p=>X(p[0]).toFixed(1)+','+Y(p[1]).toFixed(1)).join(' ')}"/>`;
-      if(l.lab){const p=l.at||pts[pts.length-1];s+=`<text class="lab" x="${X(p[0])+5}" y="${Y(p[1])+4}">${l.lab}</text>`}
+      if(l.lab){const p=l.at||pts[pts.length-1],e=l.end;s+=`<text class="lab" x="${X(p[0])+(e?-5:5)}" y="${Y(p[1])+4}"${e?' text-anchor="end"':''}>${l.lab}</text>`}
     });
     (o.dots||[]).forEach(d=>{s+=`<circle class="dot" cx="${X(d[0])}" cy="${Y(d[1])}" r="3.5"/>`;if(d[2])s+=`<text x="${X(d[0])+6}" y="${Y(d[1])-6}">${d[2]}</text>`});
     s+="</svg>";
@@ -331,34 +331,34 @@ MPK / r = 40 / 8  = 5.000</div>
   const qs=22/0.21;
   plot("fig1b",{xmax:230,ymax:24,xl:"Movies (Q)",yl:"Price ($)",xt:[[100,"100"],[200,"200"]],yt:[2,10,20,22],
     areas:[[[100,10],[100,11],[qs,0.1*qs]]],
-    lines:[{pts:[[0,20],[200,0]],lab:"D",at:[200,0]},{pts:[[0,22],[200,0]],lab:"SD",c:"l3",at:[15,20.4]},
+    lines:[{pts:[[0,20],[200,0]],lab:"D",at:[50,13]},{pts:[[0,22],[200,0]],lab:"SD",c:"l3",at:[15,20.4]},
       {pts:[[0,2],[200,0]],lab:"EMB",c:"l4",at:[120,0.8]},{pts:[[0,0],[200,20]],lab:"MC",c:"l2"}],
-    dots:[[qs,0.1*qs,"≈105"]],cap:"Social demand SD = D + EMB. Shaded triangle: deadweight loss from Q = 100 to Q ≈ 105."});
+    dots:[[qs,0.1*qs]],cap:"Social demand SD = D + EMB. The efficient point (dot) is at Q ≈ 105. The deadweight loss is the small shaded sliver between SD and MC from Q = 100 to Q ≈ 105."});
 
   plot("fig4",{xmax:100,ymax:900,xl:"Tons SO₂",yl:"$/ton",xt:[[50,"Q*"],[25,"Q₁"],[75,"Q₂"]],yt:[200,400,600,800],guides:[[50,400]],
     lines:[{pts:[[0,800],[100,0]],lab:"MBP = MAC",at:[88,96]},{pts:[[8,64],[100,800]],c:"l2",lab:"MCP"},
-      {pts:[[0,400],[50,0]],c:"l4",lab:"MBP − $400 tax",at:[30,190]}],
+      {pts:[[0,400],[50,0]],c:"l4",lab:"MBP − $400",at:[52,40]}],
     dots:[[50,400]],cap:"Efficient pollution where MBP = MCP = $400. With a $400 tax, firms emit until MBP − 400 = 0, i.e. at Q*. Q₁ and Q₂ mark outcomes under $600 and $200 taxes."});
 
   plot("fig7",{xmax:10,ymax:16,xl:"Labor (L)",yl:"Capital (K)",xt:[[100/14,"7.1"],[100/12,"8.3"]],yt:[[100/7,"14.3"]],
-    lines:[{pts:[[0,100/7],[100/12,0]],c:"l2",lab:"C₁ (w = 12)"},{pts:[[0,100/7],[100/14,0]],c:"l3",lab:"C₂ (w = 14)",at:[3.9,6.4]}],
+    lines:[{pts:[[0,100/7],[100/12,0]],c:"l2",lab:"C₁ (w = 12)",at:[5.2,6.1]},{pts:[[0,100/7],[100/14,0]],c:"l3",lab:"C₂ (w = 14)",at:[3.5,4.5],end:true}],
     cap:"C₁: slope −12/7. C₂ after the wage rises to $14: slope −2."});
 
   const iso=L=>200/L/ (1) ; // stylized Q = 10 isoquant through (20,10): K = 200/L
   plot("fig8b",{xmax:45,ymax:32,xl:"Labor (L)",yl:"Capital (K)",xt:[20,40],yt:[10,20],guides:[[20,10]],
-    lines:[{f:iso,from:6.5,to:42,lab:"Q = 10"},{pts:[[0,20],[40,0]],c:"l2",lab:"$400, w = 10",at:[33,4]},
-      {pts:[[0,20],[20,0]],c:"l3",lab:"$400, w = 20",at:[12,1]}],dots:[[20,10]],
+    lines:[{f:iso,from:6.5,to:42,lab:"Q = 10"},{pts:[[0,20],[40,0]],c:"l2",lab:"$400, w = 10",at:[40,0.8]},
+      {pts:[[0,20],[20,0]],c:"l3",lab:"$400, w = 20",at:[20,0.8]}],dots:[[20,10]],
     cap:"After the wage doubles, the $400 isocost no longer reaches Q = 10."});
   const Ls=Math.sqrt(200), Ks=200/Ls;
-  plot("fig8c",{xmax:45,ymax:32,xl:"Labor (L)",yl:"Capital (K)",xt:[[Ls,"L*"],20,30,40],yt:[10,[Ks,"K*"],20,30],guides:[[20,10],[Ls,Ks]],
-    lines:[{f:iso,from:6.5,to:42,lab:"Q = 10"},{pts:[[0,20],[40,0]],c:"l4",lab:"$400 original",at:[30,2.5]},
-      {pts:[[0,30],[30,0]],c:"l3",lab:"$600 (wage + subsidy)",at:[27,6]},{pts:[[0,2*Ks],[2*Ls,0]],c:"l2",lab:"tangent, slope −1",at:[2*Ls-2,3]}],
-    dots:[[20,10],[Ls,Ks]],cap:"Part (c): the $600 isocost passes through (20, 10). Part (d): cost is lower at the tangency (L*, K*), with less labor and more capital. Isoquant shape is illustrative."});
+  plot("fig8c",{xmax:45,ymax:32,xl:"Labor (L)",yl:"Capital (K)",xt:[[Ls,"L*"],20,40],yt:[10,[Ks,"K*"],20,30],guides:[[20,10],[Ls,Ks]],
+    lines:[{f:iso,from:7.5,to:42,lab:"Q = 10"},{pts:[[0,20],[40,0]],c:"l4",lab:"$400 (original)",at:[40,0.8]},
+      {pts:[[0,30],[30,0]],c:"l3",lab:"$600",at:[0,31]},{pts:[[0,2*Ks],[2*Ls,0]],c:"l2"}],
+    dots:[[20,10],[Ls,Ks]],cap:"Orange: the $600 isocost after the wage increase, through the original bundle (20, 10); the subsidy covers $200 of it. Blue: the cheaper isocost tangent to Q = 10 at (L*, K*), with less labor and more capital. Dashed: the original $400 isocost. Isoquant shape is illustrative."});
 
   const isoQ=(c)=>(L=>c*c/L);
   plot("fig9a",{xmax:60,ymax:55,xl:"Labor (L)",yl:"Capital (K)",xt:[15,25,40],yt:[15,25,40],guides:[[15,15],[25,25],[40,40]],
     lines:[{f:isoQ(15),from:5,to:52,lab:"Q = 50"},{f:isoQ(25),from:12,to:55,lab:"Q = 80"},{f:isoQ(40),from:30,to:58,lab:"Q = 100"},
-      {pts:[[0,30],[30,0]],c:"l2",lab:"C₁",at:[30,0]},{pts:[[0,50],[50,0]],c:"l2",lab:"C₂",at:[50,0]},{pts:[[25,55],[55,25]],c:"l2",lab:"C₃"},
+      {pts:[[0,30],[30,0]],c:"l2",lab:"C₁",at:[0,32]},{pts:[[0,50],[50,0]],c:"l2",lab:"C₂",at:[0,52]},{pts:[[25,55],[55,25]],c:"l2",lab:"C₃"},
       {pts:[[0,0],[52,52]],c:"l4",lab:"Expansion path"}],dots:[[15,15],[25,25],[40,40]],
     cap:"Isocosts with slope −1 tangent to each isoquant. Isoquant shapes are illustrative."});
 
