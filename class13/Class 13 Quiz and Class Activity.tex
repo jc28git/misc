@@ -75,9 +75,9 @@
 
 % Quiz figure: isoquant, isocost line, and the cost-minimizing bundle E.
 % Drawn with isoquant K = 32/L and isocost K = 8 - L/2 (W/R = 1/2), tangent at (8,4).
-% Optional argument "marked" adds bundles A and B and the higher isocost through them.
+% The optional argument is extra TikZ code drawn on top of the figure.
 \newcommand{\quizfigure}[1][]{%
-\begin{tikzpicture}[x=0.45cm,y=0.55cm,font=\small]
+\begin{tikzpicture}[x=0.42cm,y=0.42cm,font=\small]
   \draw[->] (0,0)--(19.5,0) node[below left] {Labor ($L$)};
   \draw[->] (0,0)--(0,10.8) node[above] {Capital ($K$)};
   % isocost through E
@@ -89,12 +89,7 @@
   \draw[dashed] (8,0) node[below] {$L^*$} -- (8,4) -- (0,4) node[left] {$K^*$};
   \fill (8,4) circle (3pt);
   \node[above right] at (8,4) {$E$};
-  \def\tmp{#1}\def\marked{marked}%
-  \ifx\tmp\marked
-    \draw[dashed,thick,solblue] (0,10)--(18,1) node[right,text=solblue] {$C_1$};
-    \fill[solblue] (16,2) circle (3pt) node[above right,text=solblue] {$A$};
-    \fill[solblue] (4,8) circle (3pt) node[above right,text=solblue] {$B$};
-  \fi
+  #1
 \end{tikzpicture}}
 
 \title{Class 13 Quiz\ifsolutions\ Solutions\fi}
@@ -141,7 +136,7 @@ The marginal product of labor ($\MPL$) is the extra output from one more unit of
 \ans{3}
 
 
-\noindent\textbf{b.} In this case, is the slope of the isocost line (the firm's budget constraint) bigger or smaller than $\MRTS_{LK}$? Compare absolute values: $W/R$ versus $\MRTS_{LK}$. Then, on the figure on page 1, spot a bundle on the isoquant where this is true and label it $A$.
+\noindent\textbf{b.} In this case, is the slope of the isocost line (the firm's budget constraint) bigger or smaller than $\MRTS_{LK}$? Compare absolute values: $W/R$ versus $\MRTS_{LK}$. Then, on the figure above, spot a bundle on the isoquant where this is true and label it $A$.
 \ans{2}
 
 
@@ -151,7 +146,7 @@ The marginal product of labor ($\MPL$) is the extra output from one more unit of
 \ans{3}
 
 
-\noindent\textbf{b.} In this case, is the slope of the isocost line bigger or smaller than $\MRTS_{LK}$? Compare absolute values: $W/R$ versus $\MRTS_{LK}$. Then, on the figure on page 1, spot a bundle on the isoquant where this is true and label it $B$.
+\noindent\textbf{b.} In this case, is the slope of the isocost line bigger or smaller than $\MRTS_{LK}$? Compare absolute values: $W/R$ versus $\MRTS_{LK}$. Then, on the figure above, spot a bundle on the isoquant where this is true and label it $B$.
 \ans{2}
 
 \end{enumerate}
@@ -239,20 +234,20 @@ Consider the graph below, which depicts the cost curves of a perfectly competiti
 \end{center}
 
 \noindent\textbf{a.} To maximize profit, how many pounds of potatoes should this seller produce?
-\ans{1}
+\ans{0.8}
 
 
 Suppose that the potato grower's bank ratchets up the interest rate applicable to the grower's adjustable-rate mortgage loan. This increases the size of the potato grower's monthly mortgage payment.
 
 \noindent\textbf{b.} Illustrate the change in the mortgage payment by shifting the appropriate cost curves on the graph above.
-\ans{0.6}
+\ans{0.4}
+
+
+\noindent\textbf{c.} Which curves shift? Which do not? Why?
+\ans{2.2}
 
 
 \continuepage{4. Potato farming and interest rates}
-
-\noindent\textbf{c.} Which curves shift? Which do not? Why?
-\ans{1}
-
 
 \noindent\textbf{d.} How does the change in interest rates affect the grower's decision on how many potatoes to produce?
 \ans{1}
