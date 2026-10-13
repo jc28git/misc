@@ -1,0 +1,211 @@
+% Class 13 Quiz and Class Activity
+% Student version (no solutions).
+\documentclass[11pt]{article}
+
+\newif\ifsolutions
+\solutionsfalse
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage[most]{tcolorbox}
+
+\definecolor{solblue}{RGB}{20,70,130}
+\setlength{\parindent}{0pt}
+\setlength{\headheight}{14pt}
+\setlength{\parskip}{4pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{PUBPOL 205}
+\rhead{Class 13\ifsolutions\ \textbf{-- Solutions}\fi}
+\cfoot{\thepage}
+
+% Solution blocks (breakable, so long solutions can split across pages)
+\newtcolorbox{solution}{breakable, enhanced, blanker,
+  left=10pt, top=2pt, bottom=2pt, before skip=6pt, after skip=8pt,
+  borderline west={2pt}{0pt}{solblue}, colupper=solblue,
+  before upper={\textbf{Solution.}\ }}
+
+% Blank space for written answers (student version only)
+\newcommand{\answerspace}[1]{\ifsolutions\else\par\vspace*{#1}\fi}
+
+% Insert a figure file if present; otherwise show a placeholder box
+\newcommand{\figfile}[2]{%
+  \IfFileExists{#2}{\includegraphics[width=#1]{#2}}%
+  {\fbox{\parbox[c][4cm][c]{#1}{\centering\small Figure file \texttt{#2} not found}}}}
+
+\newcommand{\MPL}{\mathit{MPL}}
+\newcommand{\MPK}{\mathit{MPK}}
+\newcommand{\MRTS}{\mathit{MRTS}}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% QUIZ
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{center}
+{\LARGE\bfseries Class 13 Quiz}\ifsolutions\\[4pt]{\large Solutions}\fi
+\end{center}
+
+\ifsolutions\else
+\vspace{6pt}
+Name: \rule{3in}{0.4pt}
+\vspace{10pt}
+\fi
+
+\textbf{Notation.} $L$ = labor, $K$ = capital, $Q$ = output, $W$ = wage (price of labor), $R$ = rental rate (price of capital).
+\[
+\MPL = \frac{\Delta Q}{\Delta L}, \qquad \MPK = \frac{\Delta Q}{\Delta K}.
+\]
+The marginal product of labor ($\MPL$) is the extra output from one more unit of labor, holding capital fixed. The marginal product of capital ($\MPK$) is the extra output from one more unit of capital, holding labor fixed.
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*, itemsep=6pt]
+
+\item Define the marginal rate of technical substitution of labor for capital, $\MRTS_{LK}$. What does it measure, and how is it related to the isoquant?
+\answerspace{2.6cm}
+
+
+\end{enumerate}
+
+\textbf{Use the following.} The marginal rate of technical substitution equals the ratio of marginal products, $\MRTS_{LK} = \dfrac{\MPL}{\MPK}$. A firm minimizes the cost of producing a given output where the isoquant is tangent to the lowest isocost line:
+\[
+\underbrace{-\frac{W}{R}}_{\text{slope of isocost}} = \underbrace{-\frac{\MPL}{\MPK}}_{\text{slope of isoquant}}
+\quad\Longrightarrow\quad
+\frac{\MPL}{W} = \frac{\MPK}{R}.
+\]
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*, itemsep=6pt, resume]
+
+\item Suppose that at the firm's current input mix, $\dfrac{\MPK}{R} > \dfrac{\MPL}{W}$. Interpret this inequality. Is the firm minimizing cost? Should it use more capital or more labor? Explain.
+\answerspace{3.3cm}
+
+
+\item Suppose instead that $\dfrac{\MPL}{W} > \dfrac{\MPK}{R}$. Interpret this inequality. Should the firm use more capital or more labor? Explain.
+\answerspace{3.3cm}
+
+
+\end{enumerate}
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CLASS ACTIVITY
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{center}
+{\LARGE\bfseries Class 13 Activity}\ifsolutions\\[4pt]{\large Solutions}\fi
+\end{center}
+
+%-------------------------------------------------------------------------
+\subsection*{Problem 1 (7.14)}
+
+You are the CEO of a major producer of funnel cakes. Your cost accountant has provided you with a table describing your cost structure, but you have inadvertently dripped cooking grease on it and most of the table is illegible. Reconstruct the table below, given the remaining legible numbers.
+
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|c|*{7}{>{\centering\arraybackslash}p{1.35cm}|}}
+\hline
+$Q$ & $TC$ & $FC$ & $VC$ & $MC$ & $AVC$ & $AFC$ & $ATC$ \\ \hline
+0 &     &  &    & -- & -- & -- & -- \\ \hline
+1 &     &  & 17 &    &    &    &    \\ \hline
+2 &     &  &    & 15 &    &    &    \\ \hline
+3 & 101 &  &    &    &    &    &    \\ \hline
+4 &     &  &    &    & 14.5 &  &    \\ \hline
+5 & 122 &  & 67 &    &    & 11 &    \\ \hline
+6 &     &  &    &    &    &    & 21 \\ \hline
+\end{tabular}
+\end{center}
+
+
+%-------------------------------------------------------------------------
+\subsection*{Problem 2 (7.16)}
+
+Suppose a firm has the following production function: $Q = 2KL$. The marginal product of capital for this production function is $2L$, and the marginal product of labor is $2K$. If capital rents for \$100 per unit per day, labor can be hired for \$200 per unit per day, and the firm is minimizing costs,
+
+\begin{enumerate}[label=\textbf{\alph*.}, itemsep=8pt]
+\item Find the total cost of producing 60 units of output.
+\answerspace{3cm}
+
+
+\item Suppose you want to find the cost of producing a more general $q$ units of output. Using the same set of procedures you followed in (a), but using a more general $q$ instead of 60, find this firm's total cost function, which expresses total cost as a function of $q$.
+\answerspace{3cm}
+
+
+\item Divide the total cost function you found in (b) by $q$ to find this firm's average cost function.
+\answerspace{2cm}
+
+\end{enumerate}
+
+%-------------------------------------------------------------------------
+\subsection*{Problem 3 (8.8)}
+
+Hack's Berries faces a short-run total cost of production given by
+\[
+TC = Q^3 - 12Q^2 + 100Q + 1{,}000,
+\]
+where $Q$ is the number of crates of berries produced per day. Hack's marginal cost of producing berries is $MC = 3Q^2 - 24Q + 100$.
+
+\begin{enumerate}[label=\textbf{\alph*.}, itemsep=8pt]
+\item What is the level of Hack's fixed cost?
+\answerspace{1.5cm}
+
+
+\item What is Hack's short-run average variable cost of producing berries?
+\answerspace{2cm}
+
+
+\item If berries sell for \$60 per crate, how many berries should Hack produce? How do you know? (\emph{Hint:} You may want to remember the relationship between $MC$ and $AVC$ when $AVC$ is at its minimum.)
+\answerspace{4cm}
+
+
+\item If the price of berries is \$73 per crate, how many berries should Hack produce? Explain.
+\answerspace{4cm}
+
+\end{enumerate}
+
+%-------------------------------------------------------------------------
+\subsection*{Problem 4 (8.12)}
+
+Consider the graph below, which depicts the cost curves of a perfectly competitive seller of potatoes. Potatoes currently sell for \$3 per pound.
+
+\begin{center}
+\figfile{0.55\textwidth}{c13_potato_costs.jpeg}
+\end{center}
+
+\begin{enumerate}[label=\textbf{\alph*.}, itemsep=8pt]
+\item To maximize profit, how many pounds of potatoes should this seller produce?
+\answerspace{1.5cm}
+
+\end{enumerate}
+
+Suppose that the potato grower's bank ratchets up the interest rate applicable to the grower's adjustable-rate mortgage loan. This increases the size of the potato grower's monthly mortgage payment.
+
+\begin{enumerate}[label=\textbf{\alph*.}, itemsep=8pt, resume]
+\item Illustrate the change in the mortgage payment by shifting the appropriate cost curves.
+\answerspace{1.5cm}
+
+
+\item Which curves shift? Which do not? Why?
+\answerspace{2.5cm}
+
+
+\item How does the change in interest rates affect the grower's decision on how many potatoes to produce?
+\answerspace{2.5cm}
+
+
+\item What happens to the potato grower's profit as a result of the increased interest rate?
+\answerspace{2cm}
+
+
+\item How does the change in interest rates affect the shape and/or position of the grower's short-run supply curve?
+\answerspace{2.5cm}
+
+\end{enumerate}
+
+\end{document}

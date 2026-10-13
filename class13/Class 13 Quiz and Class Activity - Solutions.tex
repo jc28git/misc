@@ -1,0 +1,365 @@
+% Class 13 Quiz and Class Activity
+% Set \solutionstrue to print solutions, \solutionsfalse for the student version.
+\documentclass[11pt]{article}
+
+\newif\ifsolutions
+\solutionstrue
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage[most]{tcolorbox}
+
+\definecolor{solblue}{RGB}{20,70,130}
+\setlength{\parindent}{0pt}
+\setlength{\headheight}{14pt}
+\setlength{\parskip}{4pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{PUBPOL 205}
+\rhead{Class 13\ifsolutions\ \textbf{-- Solutions}\fi}
+\cfoot{\thepage}
+
+% Solution blocks (breakable, so long solutions can split across pages)
+\newtcolorbox{solution}{breakable, enhanced, blanker,
+  left=10pt, top=2pt, bottom=2pt, before skip=6pt, after skip=8pt,
+  borderline west={2pt}{0pt}{solblue}, colupper=solblue,
+  before upper={\textbf{Solution.}\ }}
+
+% Blank space for written answers (student version only)
+\newcommand{\answerspace}[1]{\ifsolutions\else\par\vspace*{#1}\fi}
+
+% Insert a figure file if present; otherwise show a placeholder box
+\newcommand{\figfile}[2]{%
+  \IfFileExists{#2}{\includegraphics[width=#1]{#2}}%
+  {\fbox{\parbox[c][4cm][c]{#1}{\centering\small Figure file \texttt{#2} not found}}}}
+
+\newcommand{\MPL}{\mathit{MPL}}
+\newcommand{\MPK}{\mathit{MPK}}
+\newcommand{\MRTS}{\mathit{MRTS}}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% QUIZ
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{center}
+{\LARGE\bfseries Class 13 Quiz}\ifsolutions\\[4pt]{\large Solutions}\fi
+\end{center}
+
+\ifsolutions\else
+\vspace{6pt}
+Name: \rule{3in}{0.4pt}
+\vspace{10pt}
+\fi
+
+\textbf{Notation.} $L$ = labor, $K$ = capital, $Q$ = output, $W$ = wage (price of labor), $R$ = rental rate (price of capital).
+\[
+\MPL = \frac{\Delta Q}{\Delta L}, \qquad \MPK = \frac{\Delta Q}{\Delta K}.
+\]
+The marginal product of labor ($\MPL$) is the extra output from one more unit of labor, holding capital fixed. The marginal product of capital ($\MPK$) is the extra output from one more unit of capital, holding labor fixed.
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*, itemsep=6pt]
+
+\item Define the marginal rate of technical substitution of labor for capital, $\MRTS_{LK}$. What does it measure, and how is it related to the isoquant?
+\answerspace{2.6cm}
+
+\begin{solution}
+$\MRTS_{LK}$ is the rate at which a firm can substitute labor for capital while keeping output constant: the amount of capital the firm can give up when it adds one more unit of labor and stays on the same isoquant. It equals the absolute value of the slope of the isoquant:
+\[
+\MRTS_{LK} = -\frac{\Delta K}{\Delta L}\bigg|_{Q\ \text{constant}} = \frac{\MPL}{\MPK}.
+\]
+Why the ratio of marginal products: along an isoquant output does not change, so
+$\Delta Q = \MPL\cdot\Delta L + \MPK\cdot\Delta K = 0$, which rearranges to $-\Delta K/\Delta L = \MPL/\MPK$.
+
+Example: if $\MPL = 20$ and $\MPK = 10$, one worker produces as much as 2 units of capital, so $\MRTS_{LK} = 2$: the firm can give up 2 units of capital for 1 more worker and keep output the same.
+\end{solution}
+
+\end{enumerate}
+
+\textbf{Use the following.} The marginal rate of technical substitution equals the ratio of marginal products, $\MRTS_{LK} = \dfrac{\MPL}{\MPK}$. A firm minimizes the cost of producing a given output where the isoquant is tangent to the lowest isocost line:
+\[
+\underbrace{-\frac{W}{R}}_{\text{slope of isocost}} = \underbrace{-\frac{\MPL}{\MPK}}_{\text{slope of isoquant}}
+\quad\Longrightarrow\quad
+\frac{\MPL}{W} = \frac{\MPK}{R}.
+\]
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*, itemsep=6pt, resume]
+
+\item Suppose that at the firm's current input mix, $\dfrac{\MPK}{R} > \dfrac{\MPL}{W}$. Interpret this inequality. Is the firm minimizing cost? Should it use more capital or more labor? Explain.
+\answerspace{3.3cm}
+
+\begin{solution}
+The marginal product per dollar spent on capital is higher than the marginal product per dollar spent on labor: the last dollar spent on capital adds more output than the last dollar spent on labor. The firm is \emph{not} minimizing cost.
+
+It should use \textbf{more capital and less labor}. Moving a dollar from labor to capital raises output at the same total cost (or, equivalently, the same output can be produced at lower cost).
+
+Example: $\MPK = 30$, $R = \$10$, so $\MPK/R = 3$; $\MPL = 20$, $W = \$10$, so $\MPL/W = 2$. Shifting \$1 from labor to capital loses 2 units of output and gains 3, a net gain of 1 unit at no extra cost.
+
+The shift continues until the ratios are equal: as the firm adds capital, $\MPK$ falls, and as it uses less labor, $\MPL$ rises (diminishing marginal product).
+
+Graphically, $\MPK/R > \MPL/W$ means $\MPL/\MPK < W/R$: the isoquant is flatter than the isocost line at the current point. The firm is too far down and to the right on the isoquant (too much labor), and moves up and to the left toward the tangency.
+\end{solution}
+
+\item Suppose instead that $\dfrac{\MPL}{W} > \dfrac{\MPK}{R}$. Interpret this inequality. Should the firm use more capital or more labor? Explain.
+\answerspace{3.3cm}
+
+\begin{solution}
+The marginal product per dollar spent on labor is higher than the marginal product per dollar spent on capital (equivalently, the marginal product per dollar spent on capital is lower than per dollar spent on labor). The firm is \emph{not} minimizing cost.
+
+It should use \textbf{more labor and less capital}. Each dollar moved from capital to labor raises output at the same total cost. As labor increases, $\MPL$ falls; as capital decreases, $\MPK$ rises, until $\MPL/W = \MPK/R$.
+
+Graphically, $\MPL/\MPK > W/R$: the isoquant is steeper than the isocost line at the current point. The firm is too far up and to the left on the isoquant (too much capital), and moves down and to the right toward the tangency.
+\end{solution}
+
+\end{enumerate}
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CLASS ACTIVITY
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{center}
+{\LARGE\bfseries Class 13 Activity}\ifsolutions\\[4pt]{\large Solutions}\fi
+\end{center}
+
+%-------------------------------------------------------------------------
+\subsection*{Problem 1 (7.14)}
+
+You are the CEO of a major producer of funnel cakes. Your cost accountant has provided you with a table describing your cost structure, but you have inadvertently dripped cooking grease on it and most of the table is illegible. Reconstruct the table below, given the remaining legible numbers.
+
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|c|*{7}{>{\centering\arraybackslash}p{1.35cm}|}}
+\hline
+$Q$ & $TC$ & $FC$ & $VC$ & $MC$ & $AVC$ & $AFC$ & $ATC$ \\ \hline
+0 &     &  &    & -- & -- & -- & -- \\ \hline
+1 &     &  & 17 &    &    &    &    \\ \hline
+2 &     &  &    & 15 &    &    &    \\ \hline
+3 & 101 &  &    &    &    &    &    \\ \hline
+4 &     &  &    &    & 14.5 &  &    \\ \hline
+5 & 122 &  & 67 &    &    & 11 &    \\ \hline
+6 &     &  &    &    &    &    & 21 \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{solution}
+Use $TC = FC + VC$, $MC = \Delta TC/\Delta Q$, $AVC = VC/Q$, $AFC = FC/Q$, $ATC = TC/Q$.
+\begin{itemize}[nosep]
+\item $AFC(5) = 11 \Rightarrow FC = 5 \times 11 = 55$ at every output level (check: $TC(5) - VC(5) = 122 - 67 = 55$).
+\item $VC(1) = 17$, and $MC(2) = 15 \Rightarrow VC(2) = 17 + 15 = 32$.
+\item $TC(3) = 101 \Rightarrow VC(3) = 101 - 55 = 46$.
+\item $AVC(4) = 14.5 \Rightarrow VC(4) = 4 \times 14.5 = 58$.
+\item $ATC(6) = 21 \Rightarrow TC(6) = 6 \times 21 = 126$, so $VC(6) = 71$.
+\end{itemize}
+Computed values are in bold.
+
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|c|*{7}{>{\centering\arraybackslash}p{1.35cm}|}}
+\hline
+$Q$ & $TC$ & $FC$ & $VC$ & $MC$ & $AVC$ & $AFC$ & $ATC$ \\ \hline
+0 & \textbf{55}  & \textbf{55} & \textbf{0}  & -- & -- & -- & -- \\ \hline
+1 & \textbf{72}  & \textbf{55} & 17          & \textbf{17} & \textbf{17}    & \textbf{55}    & \textbf{72}    \\ \hline
+2 & \textbf{87}  & \textbf{55} & \textbf{32} & 15          & \textbf{16}    & \textbf{27.5}  & \textbf{43.5}  \\ \hline
+3 & 101          & \textbf{55} & \textbf{46} & \textbf{14} & \textbf{15.33} & \textbf{18.33} & \textbf{33.67} \\ \hline
+4 & \textbf{113} & \textbf{55} & \textbf{58} & \textbf{12} & 14.5           & \textbf{13.75} & \textbf{28.25} \\ \hline
+5 & 122          & \textbf{55} & 67          & \textbf{9}  & \textbf{13.4}  & 11             & \textbf{24.4}  \\ \hline
+6 & \textbf{126} & \textbf{55} & \textbf{71} & \textbf{4}  & \textbf{11.83} & \textbf{9.17}  & 21             \\ \hline
+\end{tabular}
+\end{center}
+\end{solution}
+
+%-------------------------------------------------------------------------
+\subsection*{Problem 2 (7.16)}
+
+Suppose a firm has the following production function: $Q = 2KL$. The marginal product of capital for this production function is $2L$, and the marginal product of labor is $2K$. If capital rents for \$100 per unit per day, labor can be hired for \$200 per unit per day, and the firm is minimizing costs,
+
+\begin{enumerate}[label=\textbf{\alph*.}, itemsep=8pt]
+\item Find the total cost of producing 60 units of output.
+\answerspace{3cm}
+
+\begin{solution}
+If the firm is minimizing costs,
+\[
+\frac{\MPL}{\MPK} = \frac{W}{R}
+\quad\Longrightarrow\quad
+\frac{2K}{2L} = \frac{200}{100}
+\quad\Longrightarrow\quad
+K = 2L.
+\]
+Substitute $K = 2L$ into the production function and set $Q = 60$:
+\[
+60 = 2(2L)L = 4L^2 \;\Longrightarrow\; L^2 = 15 \;\Longrightarrow\; L = \sqrt{15} \approx 3.87,
+\qquad K = 2L \approx 7.75.
+\]
+\[
+TC = 200L + 100K = 200(3.873) + 100(7.746) = 774.6 + 774.6 \approx \$1{,}549.
+\]
+(Exactly, $TC = 400\sqrt{15} \approx \$1{,}549.19$. Rounding $L$ and $K$ to 3.87 and 7.74 first gives \$1,548.)
+\end{solution}
+
+\item Suppose you want to find the cost of producing a more general $q$ units of output. Using the same set of procedures you followed in (a), but using a more general $q$ instead of 60, find this firm's total cost function, which expresses total cost as a function of $q$.
+\answerspace{3cm}
+
+\begin{solution}
+At the cost-minimizing input mix it is always the case that $K = 2L$. Then
+\[
+q = 2(2L)L = 4L^2
+\;\Longrightarrow\;
+L = \left(\frac{q}{4}\right)^{0.5} = \frac{q^{0.5}}{4^{0.5}} = 0.5\,q^{0.5},
+\qquad
+K = 2L = q^{0.5}.
+\]
+Apply the price of labor and capital to each term:
+\[
+TC = 200\,(0.5\,q^{0.5}) + 100\,q^{0.5} = 200\,q^{0.5}.
+\]
+Check: $TC(60) = 200\sqrt{60} \approx \$1{,}549$, matching (a).
+\end{solution}
+
+\item Divide the total cost function you found in (b) by $q$ to find this firm's average cost function.
+\answerspace{2cm}
+
+\begin{solution}
+\[
+ATC = \frac{TC}{q} = \frac{200\,q^{0.5}}{q} = 200\,q^{-0.5}.
+\]
+Average cost falls as output rises: this technology has increasing returns to scale (doubling $K$ and $L$ quadruples $Q = 2KL$).
+\end{solution}
+\end{enumerate}
+
+%-------------------------------------------------------------------------
+\subsection*{Problem 3 (8.8)}
+
+Hack's Berries faces a short-run total cost of production given by
+\[
+TC = Q^3 - 12Q^2 + 100Q + 1{,}000,
+\]
+where $Q$ is the number of crates of berries produced per day. Hack's marginal cost of producing berries is $MC = 3Q^2 - 24Q + 100$.
+
+\begin{enumerate}[label=\textbf{\alph*.}, itemsep=8pt]
+\item What is the level of Hack's fixed cost?
+\answerspace{1.5cm}
+
+\begin{solution}
+Fixed cost is the part of $TC$ that does not vary with $Q$: $FC = \$1{,}000$ (equivalently, $TC(0) = 1{,}000$).
+\end{solution}
+
+\item What is Hack's short-run average variable cost of producing berries?
+\answerspace{2cm}
+
+\begin{solution}
+\[
+AVC = \frac{VC}{Q} = \frac{Q^3 - 12Q^2 + 100Q}{Q} = Q^2 - 12Q + 100.
+\]
+\end{solution}
+
+\item If berries sell for \$60 per crate, how many berries should Hack produce? How do you know? (\emph{Hint:} You may want to remember the relationship between $MC$ and $AVC$ when $AVC$ is at its minimum.)
+\answerspace{4cm}
+
+\begin{solution}
+$AVC$ is minimized where it equals $MC$. Set the two expressions equal and solve for $Q$:
+\[
+3Q^2 - 24Q + 100 = Q^2 - 12Q + 100
+\;\Longrightarrow\;
+2Q^2 = 12Q
+\;\Longrightarrow\;
+Q = 6.
+\]
+The minimum of $AVC$ occurs at $Q = 6$. Its value (substituting into either $MC$ or $AVC$):
+\[
+3(6)^2 - 24(6) + 100 = (6)^2 - 12(6) + 100 = 64.
+\]
+The minimum $AVC$ is \$64. At a price of \$60, which is below the minimum of $AVC$, Hack cannot cover his variable costs at any output, so he should shut down: the loss-minimizing quantity is \textbf{0}. (He loses only his fixed cost of \$1,000.)
+\end{solution}
+
+\item If the price of berries is \$73 per crate, how many berries should Hack produce? Explain.
+\answerspace{4cm}
+
+\begin{solution}
+Set $P = MC$ and solve for $Q$:
+\[
+73 = 3Q^2 - 24Q + 100
+\;\Longrightarrow\;
+3Q^2 - 24Q + 27 = 0.
+\]
+Use the quadratic formula with $a = 3$, $b = -24$, $c = 27$:
+\[
+Q = \frac{24 \pm \sqrt{(-24)^2 - 4(3)(27)}}{2(3)} = \frac{24 \pm \sqrt{252}}{6}
+\;\Longrightarrow\;
+Q \approx 1.354 \quad\text{or}\quad Q \approx 6.646.
+\]
+Hack chooses the larger root, $Q \approx \mathbf{6.646}$ crates, because it is on the upward-sloping portion of the marginal cost curve. Since $P = \$73$ exceeds $AVC(6.646) \approx \$64.42$, producing is better than shutting down. (Revenue covers variable cost and part of the fixed cost, so his loss is smaller than the \$1,000 he would lose by shutting down.)
+\end{solution}
+\end{enumerate}
+
+%-------------------------------------------------------------------------
+\subsection*{Problem 4 (8.12)}
+
+Consider the graph below, which depicts the cost curves of a perfectly competitive seller of potatoes. Potatoes currently sell for \$3 per pound.
+
+\begin{center}
+\figfile{0.55\textwidth}{c13_potato_costs.jpeg}
+\end{center}
+
+\begin{enumerate}[label=\textbf{\alph*.}, itemsep=8pt]
+\item To maximize profit, how many pounds of potatoes should this seller produce?
+\answerspace{1.5cm}
+
+\begin{solution}
+Produce where $MR = MC$. For a perfectly competitive seller $MR = P = \$3$, and $MC = \$3$ at \textbf{5,000 pounds}.
+\end{solution}
+\end{enumerate}
+
+Suppose that the potato grower's bank ratchets up the interest rate applicable to the grower's adjustable-rate mortgage loan. This increases the size of the potato grower's monthly mortgage payment.
+
+\begin{enumerate}[label=\textbf{\alph*.}, itemsep=8pt, resume]
+\item Illustrate the change in the mortgage payment by shifting the appropriate cost curves.
+\answerspace{1.5cm}
+
+\begin{solution}
+An increase in the mortgage payment increases the fixed cost of production, shifting the average total cost curve up (from $ATC_1^*$ to $ATC_2^*$).
+
+\begin{center}
+\figfile{0.55\textwidth}{c13_potato_costs_solution.jpeg}
+\end{center}
+\end{solution}
+
+\item Which curves shift? Which do not? Why?
+\answerspace{2.5cm}
+
+\begin{solution}
+Only the average total cost curve shifts. The average variable cost curve is unchanged because the mortgage payment does not change variable cost. The marginal cost curve is also unchanged: a change in fixed cost does not change the cost of producing one more unit.
+\end{solution}
+
+\item How does the change in interest rates affect the grower's decision on how many potatoes to produce?
+\answerspace{2.5cm}
+
+\begin{solution}
+It has no effect on the short-run output decision, because $MC$ does not shift: the grower still produces 5,000 pounds, where $P = MC$. (However, if the higher interest rate pushes total cost above total revenue, leaving negative economic profit, the grower would exit in the long run.)
+\end{solution}
+
+\item What happens to the potato grower's profit as a result of the increased interest rate?
+\answerspace{2cm}
+
+\begin{solution}
+Profit falls. Total revenue is unchanged (same price and quantity), but total cost rises by the increase in fixed cost.
+\end{solution}
+
+\item How does the change in interest rates affect the shape and/or position of the grower's short-run supply curve?
+\answerspace{2.5cm}
+
+\begin{solution}
+The short-run supply curve is the $MC$ curve above the minimum of $AVC$. Neither $MC$ nor $AVC$ shifts, so the short-run supply curve is unaffected.
+\end{solution}
+\end{enumerate}
+
+\end{document}
