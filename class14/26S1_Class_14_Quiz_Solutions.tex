@@ -75,7 +75,7 @@
 %   ATC = AVC + FC/Q              (min at Q = 4.6,  ATC = 6.2336  -> break-even point)
 \definecolor{supplyorange}{RGB}{245,160,60}
 \newcommand{\costfigure}{%
-\begin{tikzpicture}[x=1.2cm,y=0.45cm,font=\small]
+\begin{tikzpicture}[x=1.2cm,y=0.4cm,font=\small]
   % axes
   \draw[thick,->] (0,0) -- (9.5,0) node[below left] {Quantity ($Q$)};
   \draw[thick,->] (0,0) -- (0,15.2) node[above] {Price, Cost (\$)};
@@ -139,8 +139,8 @@ Check with the intercepts of the $C = \$100$ line: \$100 buys 10 units of labor,
 \item \textbf{The curves.} $MC$ crosses both $AVC$ and $ATC$ at their minimum points: when $MC$ is below an average, one more unit pulls the average down, and when $MC$ is above it, one more unit pulls it up. Formally, $d(VC/Q)/dQ = (MC - AVC)/Q$, which is zero exactly where $MC = AVC$ (same for $ATC$). $ATC$ lies above $AVC$ by $AFC = FC/Q$, which shrinks as $Q$ grows, so the curves get closer and $\min ATC$ lies above and to the right of $\min AVC$.
 \item \textbf{Break-even point:} where $MC = ATC$, at the minimum of $ATC$. At $P = \min ATC$ the firm produces where $P = MC = ATC$ and earns zero economic profit; above this price it earns a profit, below it a loss.
 \item \textbf{Shutdown point:} where $MC = AVC$, at the minimum of $AVC$. If $P < \min AVC$, revenue does not cover variable cost, so producing loses more than shutting down (which loses only $FC$). The firm produces $Q = 0$.
-\item \textbf{Short-run supply curve} (shaded): the firm sets $P = MC$, so supply is the $MC$ curve above $\min AVC$. For prices below $\min AVC$, $Q = 0$ (the shaded part of the vertical axis).
-\item \textbf{Between the two points} ($\min AVC \le P < \min ATC$), the firm keeps producing at a loss: revenue covers all variable cost and part of fixed cost, so the loss is smaller than $FC$. Example: $FC = \$40$, $P = \$8$, and at the output where $P = MC$, $Q = 10$, $AVC = \$6$, $ATC = \$10$. Producing gives profit $(8 - 10) \times 10 = -\$20$; shutting down gives $-\$40$. Produce.
+\item \textbf{Short-run supply curve} (shaded): the firm sets $P = MC$, so supply is $MC$ above $\min AVC$, and $Q = 0$ below $\min AVC$.
+\item \textbf{Between the two points} ($\min AVC < P < \min ATC$), the firm keeps producing at a loss: revenue covers all variable cost and part of fixed cost, so the loss is smaller than $FC$. Example: $FC = \$40$, $P = \$8$, and at the output where $P = MC$, $Q = 10$, $AVC = \$6$, $ATC = \$10$. Producing gives profit $(8 - 10) \times 10 = -\$20$; shutting down gives $-\$40$. Produce. (At exactly $P = \min AVC$ the loss is $FC$ either way, so the firm is indifferent.)
 \end{itemize}
 \end{solution}
 \end{enumerate}
